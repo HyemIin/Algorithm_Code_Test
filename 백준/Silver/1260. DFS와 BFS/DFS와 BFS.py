@@ -2,10 +2,9 @@ import sys
 from collections import deque
 input = sys.stdin.readline
 
-
 def dfs(v):
     visited[v] = True
-    result.append(v)
+    print(v,end=" ")
     for i in map[v]:
         if not visited[i]:
             dfs(i)
@@ -37,7 +36,7 @@ for i in range(len(map)):
 visited = [False]*(n+1)
 visited_bfs = [False for _ in range(n+1)]
 
-result = []
+
 dfs(v)
-print(*result)
+print()
 bfs(v)
