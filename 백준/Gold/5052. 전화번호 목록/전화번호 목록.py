@@ -1,12 +1,13 @@
 import sys
-# input = sys.stdin.readline().rstrip
+input = sys.stdin.readline
 
-t = int(sys.stdin.readline().rstrip())
+t = int(input().rstrip())
 for i in range(t):
-    n = int(sys.stdin.readline().rstrip())
+    n = int(input().rstrip())
+
     phone_number = []
     for j in range(n):
-        phone_number.append(sys.stdin.readline().rstrip())
+        phone_number.append(input().rstrip())
 
     phone_number.sort()
 
