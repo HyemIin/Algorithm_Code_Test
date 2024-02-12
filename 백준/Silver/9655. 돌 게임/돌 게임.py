@@ -1,25 +1,22 @@
 import sys
 input=sys.stdin.readline
 n = int(input())
-winner = 1 #홀수면 SK, 짝수면 CY
-ans = n
+sequence = 1 #홀수면 SK, 짝수면 CY
 while 1:
-    if ans%3 == 0:
-        answer = ans // 3
-        if answer%2 != 0:
-            if winner%2 != 0:
-                print("SK")
-                break
-            else:
-                print("CY")
-                break
-        else:
-            if winner%2 != 0:
-                print("CY")
-                break
-            else:
-                print("SK")
-                break
+    if n%3 == 0: # n이 3의 배수라면
+        answer = n // 3
+        if answer%2 != 0 and sequence%2 != 0: # answer가 짝수라면 +  지금 차례 사람이 SK라면
+            print("SK")
+            break
+        elif answer%2 != 0 and sequence%2 == 0:
+            print("CY")
+            break
+        elif answer%2 == 0 and sequence%2 != 0:
+            print("CY")
+            break
+        elif answer%2 == 0 and sequence%2 == 0:
+            print("SK")
+            break
     else:
-        ans -= 1
-        winner += 1
+        n -= 1
+        sequence += 1
