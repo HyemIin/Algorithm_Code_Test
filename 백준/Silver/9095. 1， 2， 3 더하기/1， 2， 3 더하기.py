@@ -1,15 +1,9 @@
 import sys
-from itertools import product
-input = sys.stdin.readline
-
-data = [1,2,3]
+input=sys.stdin.readline
 t = int(input())
-for i in range(t):
+for tc in range(t):
     n = int(input())
-    count = 0
-    for j in range(1,n+1):
-        hap = product(data,repeat = j)
-        for k in hap:
-            if sum(k) == n:
-                count += 1
-    print(count)
+    dp=[0,1,2,4,7,13]
+    for i in range(6,n+1):
+        dp.append(dp[i-1]+dp[i-2]+dp[i-3])
+    print(dp[n])
