@@ -1,37 +1,36 @@
 import sys
-sys.setrecursionlimit(10**6) # 재귀 제한 늘이기
+from collections import deque
 
-def dfs(x,y):
-    global count
-    if x < 0 or y < 0 or x >= n or y >= m:
-        return
-    if data[x][y] == "X":
-        return
-    if data[x][y] == "P":
-        data[x][y] = "X"
-        count += 1
-        dfs(x + 1, y)
-        dfs(x - 1, y)
-        dfs(x, y + 1)
-        dfs(x, y - 1)
-    if data[x][y] == "O" or data[x][y] == "I":
-        data[x][y] = "X"
-        dfs(x+1,y)
-        dfs(x-1,y)
-        dfs(x,y+1)
-        dfs(x,y-1)
-
-input=sys.stdin.readline
-n,m = map(int,input().split())
+input = sys.stdin.readline
+n, m = map(int, input().split())
 data = [list(input().rstrip()) for _ in range(n)]
-count = 0
-x,y = 0,0
+
 for i in range(n):
     for j in range(m):
         if data[i][j] == "I":
             x,y = i,j
-dfs(x,y)
 
+dx = [1,-1,0,0]
+dy = [0,0,1,-1]
+count = 0
+q = deque()
+q.append([x,y])
+
+while q:
+    x,y = q.popleft()
+    for v in range(4):
+        ux,uy = x+ dx[v], y+dy[v]
+        if ux < 0 or uy < 0 or ux >= n or uy >= m or data[ux][uy] == "X":
+            continue
+        if data[ux][uy] == "I" or data[ux][uy] == "O":
+            data[ux][uy] = "X"
+            q.append([ux,uy])
+            continue
+        if data[ux][uy] == "P":
+            data[ux][uy] = "X"
+            count += 1
+            q.append([ux, uy])
+            continue
 if count != 0:
     print(count)
 else:
