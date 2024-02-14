@@ -1,17 +1,27 @@
+#BFS
 import sys
 from collections import deque
-
 input = sys.stdin.readline
 n, m = map(int, input().split())
+
+#캠퍼스
 data = [list(input().rstrip()) for _ in range(n)]
 
+#도연 위치
+find = 0
 for i in range(n):
+    if find == 1:
+        break
     for j in range(m):
         if data[i][j] == "I":
             x,y = i,j
+            find = 1
+            break
 
+#direction
 dx = [1,-1,0,0]
 dy = [0,0,1,-1]
+
 count = 0
 q = deque()
 q.append([x,y])
@@ -31,6 +41,7 @@ while q:
             count += 1
             q.append([ux, uy])
             continue
+
 if count != 0:
     print(count)
 else:
