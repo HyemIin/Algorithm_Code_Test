@@ -1,20 +1,18 @@
-a,b = map(str,input().split())
-data = [b]
-
+n,m = map(str,input().split())
+data=[m]
 while True:
-    if int(a) == int(b):
-
+    if int(n) == int(m):
         print(len(data))
         break
-    if int(a) > int(b):
+    if int(n) > int(m):
         print(-1)
         break
-    if b[-1] == "1":
-        b = b[:-1]
-        data.append(b)
-    elif int(b)%2 == 0:
-        b = str(int(b)//2)
-        data.append(b)
+    if m[-1] == "1":
+        m = m[:-1]
+        data.append(m)
+    elif int(m)%2 == 0:
+        m = str(int(m)//2)
+        data.append(m)
     else:
         print(-1)
         break
