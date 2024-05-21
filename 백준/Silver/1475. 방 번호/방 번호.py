@@ -1,12 +1,14 @@
-import math
-n = (input())
-data = [0]*(10)
-for i in n:
-    data[int(i)] += 1
-if data.index(max(data)) != 6 and data.index(max(data)) != 9:
-    print(max(data))
-else:
-    if data[7] != max(data) and data[8] != max(data):
-        print(math.ceil((data[6]+data[9])/2))
+seet = [0,0,0,0,0,0,0,0,0,0]
+count = 1
+n = input()
+for x in n:
+    i = int(x)
+    if i == 6 or i == 9:
+         if seet[6] - seet[9] < 0:
+             seet[6] += 1
+         else:
+             seet[9] += 1
     else:
-        print(max(data))
+        seet[i] += 1
+
+print(max(seet))
